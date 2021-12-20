@@ -102,15 +102,31 @@ function createInputColor(color) {
   inputColor.type = "color";
   inputColor.value = color;
   customizePallete.appendChild(inputColor);
-  console.log(color)
 }
 
-function createNewPallete(e) {
+const pallete = document.querySelector("#pallete");
+
+function createNewPallete() {
+  pallete.classList.add("hidden");
   colors.forEach((element) => {
     const color = element;
     createInputColor(color);
   });
-  e.target.removeEventListener("click", createNewPallete, false);
+  buttonCustomize.removeEventListener("click", createNewPallete, false);
 }
 
 buttonCustomize.addEventListener("click", createNewPallete);
+
+const buttonAddColor = document.querySelector("#add-color");
+const buttonSaveCustomize = document.querySelector("#save-customize");
+
+function newColor() {
+  const whiteColor = "#ffffff";
+  createInputColor(whiteColor);
+}
+
+buttonAddColor.addEventListener("click", newColor);
+
+function saveNewPallete() {}
+
+buttonSaveCustomize.addEventListener("click", saveNewPallete);
