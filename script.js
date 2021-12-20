@@ -6,20 +6,29 @@ const palleteColors = document.querySelectorAll(".color");
 const colors = ["black", "yellow", "blue", "red", "green", "pink"];
 
 function selectColor(event) {
-  //event.target.
+  const colorSpaceSelected = document.querySelector(".selected");
+  colorSpaceSelected.classList.remove("selected");
+  event.target.classList.add("selected");
+}
+
+function createPallete(colorSpace, color) {
+  colorSpace.classList.add(color);
+  colorSpace.style.backgroundColor = color;
+  colorSpace.addEventListener("click", selectColor);
 }
 
 palleteColors.forEach((element, index) => {
   const color = colors[index];
-  element.classList.add(color);
-  element.addEventListener("click", selectColor);
+  const colorSpace = element;
+  createPallete(colorSpace, color);
 });
 
-function createPallete(colorSpace, color) {}
+const getColor = (e) => window.getComputedStyle(e).backgroundColor;
 
 function paint(e) {
+  const selectedColor = getColor(document.querySelector(".selected"));
   const square = e.target;
-  square.style.backgroundColor = "blue";
+  square.style.backgroundColor = selectedColor;
   square.classList.add("colored");
 }
 
