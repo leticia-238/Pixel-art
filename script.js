@@ -35,7 +35,7 @@ function paint(e) {
 const svg = document.querySelector("#paint-area svg");
 
 function paintAreaDimensions() {
-  const areaSize = parseInt(window.getComputedStyle(paintArea).width);
+  const areaSize = parseInt(window.getComputedStyle(paintArea).width, 10);
   svg.setAttribute("viewBox", `0 0 ${areaSize} ${areaSize}`);
   svg.setAttribute("width", areaSize);
   svg.setAttribute("height", areaSize);
@@ -44,7 +44,7 @@ function paintAreaDimensions() {
 
 function squareSize() {
   const boardWidth = paintAreaDimensions();
-  return parseInt(boardWidth) / numberOfSquares.value + "px";
+  return parseInt(boardWidth, 10) / numberOfSquares.value + "px";
 }
 
 function createSquare() {
@@ -69,15 +69,19 @@ window.onload = createPixelBoard();
 const link = document.querySelector("#link-download");
 const image = document.querySelector("#my-image");
 
+function formatText(text) {
+  let exceptLineBreak = new RegExp("[^\f\n\r\t\v]", "g");
+  let array = text.match(exceptLineBreak);
+  return array.join("");
+}
+
 function createSVG() {
   let mimeType = "image/svg+xml";
-  let str = paintArea.innerHTML;
-  let re = new RegExp("[^\f\n\r\t\v]", "g");
-  let array = str.match(re);
-  let file = [array.join("")];
-  let blob = new Blob(file, { type: mimeType });
-  let url = URL.createObjectURL(blob);
-  image.src = url;
-  link.href = url;
+  let svgString = paintArea.innerHTML;
+  let svgFile = formatText(svgString);
+  let blob = new Blob([svgFile], { type: mimeType });
+  let svgUrl = URL.createObjectURL(blob);
+  image.src = svgUrl;
+  link.href = svgUrl;
 }
 createSVG();
