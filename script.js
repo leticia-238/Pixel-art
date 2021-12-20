@@ -2,8 +2,8 @@ const pixelBoard = document.querySelector("#pixel-board");
 const numberOfSquares = document.querySelector("#select-size");
 const paintArea = document.querySelector("#paint-area");
 
-const palleteColors = document.querySelectorAll(".color");
-const colors = ["black", "yellow", "blue", "red", "green", "pink"];
+let palleteColors = document.querySelectorAll(".color");
+let colors = ["#000000", "#acdeb2", "#e1eab5", "#edad9e", "#fe4b74", "#390d2d"];
 
 function selectColor(event) {
   const colorSpaceSelected = document.querySelector(".selected");
@@ -12,7 +12,6 @@ function selectColor(event) {
 }
 
 function createPallete(colorSpace, color) {
-  colorSpace.classList.add(color);
   colorSpace.style.backgroundColor = color;
   colorSpace.addEventListener("click", selectColor);
 }
@@ -94,3 +93,24 @@ function showImage() {
 }
 
 buttonViewImage.addEventListener("click", showImage);
+
+const customizePallete = document.querySelector("#customize-pallete");
+const buttonCustomize = document.querySelector("#customize");
+
+function createInputColor(color) {
+  const inputColor = document.createElement("input");
+  inputColor.type = "color";
+  inputColor.value = color;
+  customizePallete.appendChild(inputColor);
+  console.log(color)
+}
+
+function createNewPallete(e) {
+  colors.forEach((element) => {
+    const color = element;
+    createInputColor(color);
+  });
+  e.target.removeEventListener("click", createNewPallete, false);
+}
+
+buttonCustomize.addEventListener("click", createNewPallete);
