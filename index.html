@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel-art</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section>
+      <div id="pallete">
+        <div class="color selected"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+      </div>
+    </section>
+    <section>
+      <label for="select-size">Board size:</label>
+      <select id="select-size">
+        <option value="8">8 X 8</option>
+        <option value="16">16 X 16</option>
+        <option value="32">32 X 32</option>
+        <option value="64">64 X 64</option>
+        <option value="128">128 X 128</option>
+      </select>
+    </section>
+    <section id="paint-area">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+          #pixel-board {
+            background: gray;
+            width: 100%;
+            height: 100%;
+            line-height: 0;
+          }
+
+          .square {
+            display: inline-block;
+            border: 1px solid black;
+            background-color: white;
+          }
+        </style>
+        <foreignObject x="0" y="0" width="100%" height="100%">
+          <div id="pixel-board" xmlns="http://www.w3.org/1999/xhtml"></div>
+        </foreignObject>
+      </svg>
+    </section>
+    <button type="button">Ver Desenho</button>
+    <section id="view-image">
+      <img id="my-image" />
+      <a id="link-download" download>download</a>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

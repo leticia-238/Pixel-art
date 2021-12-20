@@ -1,0 +1,11 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#paint-area{
+  --size:300px;
+  width: var(--size);
+  height: var(--size);
+}
