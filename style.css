@@ -9,3 +9,13 @@
   width: var(--size);
   height: var(--size);
 }
+
+#pallete{
+  display: flex;
+}
+
+.color {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+}
