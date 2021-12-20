@@ -66,7 +66,7 @@ function createPixelBoard() {
 
 window.onload = createPixelBoard();
 
-const link = document.querySelector("#link-download");
+const linkDownload = document.querySelector("#link-download");
 const image = document.querySelector("#my-image");
 
 function formatText(text) {
@@ -82,6 +82,15 @@ function createSVG() {
   let blob = new Blob([svgFile], { type: mimeType });
   let svgUrl = URL.createObjectURL(blob);
   image.src = svgUrl;
-  link.href = svgUrl;
+  linkDownload.href = svgUrl;
 }
-createSVG();
+
+const buttonViewImage = document.querySelector("#view-image");
+const viewArea = document.querySelector("#view-area");
+
+function showImage() {
+  viewArea.classList.remove("hidden");
+  createSVG();
+}
+
+buttonViewImage.addEventListener("click", showImage);
