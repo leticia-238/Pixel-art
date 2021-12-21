@@ -40,7 +40,8 @@ function paint(e) {
 const svg = document.querySelector("#paint-area svg");
 
 function paintAreaDimensions() {
-  const areaSize = parseInt(window.getComputedStyle(paintArea).width, 10);
+  const areaSize = 100 * Math.log2(numberOfSquares.value);
+  paintArea.style.height = areaSize + "px";
   svg.setAttribute("viewBox", `0 0 ${areaSize} ${areaSize}`);
   svg.setAttribute("width", areaSize);
   svg.setAttribute("height", areaSize);
@@ -71,6 +72,18 @@ function createPixelBoard() {
 
 window.onload = createPixelBoard();
 
+function removeChildren(parent) {
+  while (parent.hasChildNodes()) {
+    parent.firstChild.remove();
+  }
+}
+
+function createNewBoard() {
+  removeChildren(pixelBoard);
+  createPixelBoard();
+}
+
+numberOfSquares.addEventListener("change", createNewBoard);
 /*==========================================*/
 const linkDownload = document.querySelector("#link-download");
 const image = document.querySelector("#my-image");
@@ -117,12 +130,6 @@ function createInputColor(color) {
   inputColor.type = "color";
   inputColor.value = color;
   customizePallete.appendChild(inputColor);
-}
-
-function removeChildren(parent) {
-  while (parent.hasChildNodes()) {
-    parent.firstChild.remove();
-  }
 }
 
 function createNewPallete() {
