@@ -8,51 +8,60 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section>
-      <div id="pallete"></div>
-      <button type="button" id="customize">Personalizar paleta</button>
-    </section>
-    <section class="hidden" id="customize-area">
-      <div id="customize-pallete"></div>
-      <button type="button" id="add-color">Adicionar cor</button>
-      <button type="button" id="save-customize">Salvar alterações</button>
-      <div>
-        <label for="select-size">Board size:</label>
-        <select id="select-size">
-          <option value="8">8 X 8</option>
-          <option value="16">16 X 16</option>
-          <option value="32">32 X 32</option>
-        </select>
-      </div>
-    </section>
-    <section id="paint-area">
-      <svg xmlns="http://www.w3.org/2000/svg">
-        <style>
-          * {
-            box-sizing: border-box;
-          }
-          #pixel-board {
-            background: gray;
-            width: 100%;
-            height: 100%;
-            line-height: 0;
-          }
+    <header>
+      <h1>Pixel Art</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Paleta</h2>
+        <div id="pallete"></div>
+        <button type="button" id="customize">Personalizar paleta</button>
+      </section>
+      <section class="hidden" id="customize-area">
+        <div id="customize-pallete"></div>
+        <button type="button" id="add-color">Adicionar cor</button>
+        <button type="button" id="save-customize">Salvar alterações</button>
+        <div>
+          <label for="select-size">Board size:</label>
+          <select id="select-size">
+            <option value="8">8 X 8</option>
+            <option value="16">16 X 16</option>
+            <option value="32">32 X 32</option>
+          </select>
+        </div>
+      </section>
+      <section id="paint-area">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <style>
+            * {
+              box-sizing: border-box;
+            }
+            #pixel-board {
+              background: gray;
+              width: 100%;
+              height: 100%;
+              line-height: 0;
+            }
 
-          .square {
-            display: inline-block;
-            background-color: white;
-          }
-        </style>
-        <foreignObject x="0" y="0" width="100%" height="100%">
-          <div id="pixel-board" xmlns="http://www.w3.org/1999/xhtml"></div>
-        </foreignObject>
-      </svg>
-    </section>
-    <button type="button" id="view-image">Ver Desenho</button>
-    <section id="view-area" class="hidden">
-      <img id="my-image" />
-      <a id="link-download" download>download</a>
-    </section>
+            .square {
+              display: inline-block;
+              background-color: white;
+            }
+          </style>
+          <foreignObject x="0" y="0" width="100%" height="100%">
+            <div id="pixel-board" xmlns="http://www.w3.org/1999/xhtml"></div>
+          </foreignObject>
+        </svg>
+      </section>
+      <section>
+        <button type="button" id="clean-paint">Refresh</button>
+        <button type="button" id="view-image">Ver Desenho</button>
+      </section>
+      <section id="view-area" class="hidden">
+        <img id="my-image" />
+        <a id="link-download" download>download</a>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

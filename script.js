@@ -163,7 +163,6 @@ function setNewColors() {
     const color = element.value;
     colors[index] = color;
   });
-  console.log(colors);
 }
 
 function saveNewPallete() {

@@ -4,8 +4,16 @@
   margin: 0;
 }
 
+header{
+  text-align: center;
+}
+
+main {
+  display: flex;
+}
+
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 #paint-area {
@@ -13,10 +21,11 @@
 }
 
 #pallete {
-  display: flex;
+  
 }
 
 .color {
+  display: inline-block;
   width: 25px;
   height: 25px;
   border: 1px solid black;
