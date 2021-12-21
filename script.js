@@ -2,7 +2,7 @@ const pixelBoard = document.querySelector("#pixel-board");
 const numberOfSquares = document.querySelector("#select-size");
 const paintArea = document.querySelector("#paint-area");
 
-let palleteColors = document.querySelectorAll(".color");
+const pallete = document.querySelector("#pallete");
 let colors = ["#000000", "#acdeb2", "#e1eab5", "#edad9e", "#fe4b74", "#390d2d"];
 
 function selectColor(event) {
@@ -11,17 +11,23 @@ function selectColor(event) {
   event.target.classList.add("selected");
 }
 
-function createPallete(colorSpace, color) {
+function createSpaceColor(color) {
+  const colorSpace = document.createElement("div");
+  colorSpace.classList.add("color");
   colorSpace.style.backgroundColor = color;
   colorSpace.addEventListener("click", selectColor);
+  pallete.appendChild(colorSpace);
 }
 
-palleteColors.forEach((element, index) => {
-  const color = colors[index];
-  const colorSpace = element;
-  createPallete(colorSpace, color);
-});
-
+function createPallete() {
+  colors.forEach((element) => {
+    const color = element;
+    createSpaceColor(color);
+  });
+  pallete.children[0].classList.add("selected");
+}
+createPallete();
+/*==========================================*/
 const getColor = (e) => window.getComputedStyle(e).backgroundColor;
 
 function paint(e) {
@@ -65,6 +71,7 @@ function createPixelBoard() {
 
 window.onload = createPixelBoard();
 
+/*==========================================*/
 const linkDownload = document.querySelector("#link-download");
 const image = document.querySelector("#my-image");
 
@@ -94,8 +101,16 @@ function showImage() {
 
 buttonViewImage.addEventListener("click", showImage);
 
+/*==========================================*/
+const customizeArea = document.querySelector("#customize-area");
 const customizePallete = document.querySelector("#customize-pallete");
 const buttonCustomize = document.querySelector("#customize");
+
+function toggleHidden() {
+  pallete.classList.toggle("hidden");
+  buttonCustomize.classList.toggle("hidden");
+  customizeArea.classList.toggle("hidden");
+}
 
 function createInputColor(color) {
   const inputColor = document.createElement("input");
@@ -104,15 +119,19 @@ function createInputColor(color) {
   customizePallete.appendChild(inputColor);
 }
 
-const pallete = document.querySelector("#pallete");
+function removeChildren(parent) {
+  while (parent.hasChildNodes()) {
+    parent.firstChild.remove();
+  }
+}
 
 function createNewPallete() {
-  pallete.classList.add("hidden");
+  removeChildren(customizePallete);
+  toggleHidden();
   colors.forEach((element) => {
     const color = element;
     createInputColor(color);
   });
-  buttonCustomize.removeEventListener("click", createNewPallete, false);
 }
 
 buttonCustomize.addEventListener("click", createNewPallete);
@@ -121,12 +140,30 @@ const buttonAddColor = document.querySelector("#add-color");
 const buttonSaveCustomize = document.querySelector("#save-customize");
 
 function newColor() {
-  const whiteColor = "#ffffff";
-  createInputColor(whiteColor);
+  const numOfColors = customizePallete.children.length;
+  const numMaxOfColors = 20;
+  if (numOfColors < numMaxOfColors) {
+    const whiteColor = "#ffffff";
+    createInputColor(whiteColor);
+  }
 }
 
 buttonAddColor.addEventListener("click", newColor);
 
-function saveNewPallete() {}
+function setNewColors() {
+  const newColors = document.querySelectorAll("#customize-pallete input");
+  newColors.forEach((element, index) => {
+    const color = element.value;
+    colors[index] = color;
+  });
+  console.log(colors);
+}
+
+function saveNewPallete() {
+  removeChildren(pallete);
+  setNewColors();
+  createPallete();
+  toggleHidden();
+}
 
 buttonSaveCustomize.addEventListener("click", saveNewPallete);

@@ -10,33 +10,26 @@
   <body>
     <section>
       <div id="pallete">
-        <div class="color selected"></div>
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
       </div>
       <button type="button" id="customize">Personalizar paleta</button>
-      <div id="customize-pallete">
-      </div>
+    </section>
+    <section class="hidden" id="customize-area">
+      <div id="customize-pallete"></div>
       <button type="button" id="add-color">Adicionar cor</button>
       <button type="button" id="save-customize">Salvar alterações</button>
-    </section>
-    <section>
-      <label for="select-size">Board size:</label>
-      <select id="select-size">
-        <option value="8">8 X 8</option>
-        <option value="16">16 X 16</option>
-        <option value="32">32 X 32</option>
-        <option value="64">64 X 64</option>
-        <option value="128">128 X 128</option>
-      </select>
+      <div>
+        <label for="select-size">Board size:</label>
+        <select id="select-size">
+          <option value="8">8 X 8</option>
+          <option value="16">16 X 16</option>
+          <option value="32">32 X 32</option>
+          <option value="64">64 X 64</option>
+          <option value="128">128 X 128</option>
+        </select>
+      </div>
     </section>
     <section id="paint-area">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg">
         <style>
           * {
             box-sizing: border-box;
