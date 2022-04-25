@@ -173,3 +173,7 @@ function saveNewPallete() {
 }
 
 buttonSaveCustomize.addEventListener("click", saveNewPallete);
+
+const buttonRefresh = document.querySelector('#clean-paint');
+
+buttonRefresh.addEventListener('click',createNewBoard);
