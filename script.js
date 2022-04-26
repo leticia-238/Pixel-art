@@ -3,7 +3,15 @@ const numberOfSquares = document.querySelector("#select-size");
 const paintArea = document.querySelector("#paint-area");
 
 const pallete = document.querySelector("#pallete");
-let colors = ["#000000", "#acdeb2", "#e1eab5", "#edad9e", "#fe4b74", "#390d2d"];
+let colors = [
+  "#000000", 
+  "#acdeb2", 
+  "#e1eab5", 
+  "#edad9e", 
+  "#fe4b74", 
+  "#390d2d",
+  '#ef6dcc',
+];
 
 function selectColor(event) {
   const colorSpaceSelected = document.querySelector(".selected");
@@ -108,7 +116,7 @@ const buttonViewImage = document.querySelector("#view-image");
 const viewArea = document.querySelector("#view-area");
 
 function showImage() {
-  viewArea.classList.remove("hidden");
+  viewArea.classList.toggle("hidden");
   createSVG();
 }
 

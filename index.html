@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixel-art</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Pixel Art</h1>
-    </header>
-    <main>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel-art</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/d33d99e0b6.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="header">
+    <h1>Pixel Art</h1>
+  </header>
+  <main>
+    <div class="pallete-container">
       <section>
-        <h2>Paleta</h2>
-        <div id="pallete"></div>
-        <button type="button" id="customize">Personalizar paleta</button>
+        <h2>Paleta de Cores</h2>
+        <div id="pallete" class="colors-box"></div>
+        <button type="button" id="customize"><i class="fa-solid fa-pen-to-square"></i>Personalizar</button>
       </section>
       <section class="hidden" id="customize-area">
-        <div id="customize-pallete"></div>
-        <button type="button" id="add-color">Adicionar cor</button>
-        <button type="button" id="save-customize">Salvar alterações</button>
+        <div id="customize-pallete" class="colors-box"></div>
+        <button type="button" id="add-color"><i class="fa-solid fa-plus"></i>Add</button>
+        <button type="button" id="save-customize"><i class="fa-solid fa-check"></i>Salvar</button>
         <div>
           <label for="select-size">Board size:</label>
           <select id="select-size">
@@ -30,14 +34,18 @@
           </select>
         </div>
       </section>
+    </div>
+    <div class="paint-area-container">
+      <button type="button" id="clean-paint">↺</button>
       <section id="paint-area">
         <svg xmlns="http://www.w3.org/2000/svg">
           <style>
             * {
               box-sizing: border-box;
             }
+
             #pixel-board {
-              background: gray;
+              background: white;
               width: 100%;
               height: 100%;
               line-height: 0;
@@ -53,15 +61,16 @@
           </foreignObject>
         </svg>
       </section>
-      <section>
-        <button type="button" id="clean-paint">Refresh</button>
-        <button type="button" id="view-image">Ver Desenho</button>
-      </section>
+    </div>
+    <div class="view-image-container">
+      <button type="button" id="view-image"><i class="fa-solid fa-eye"></i>Ver Desenho</button>
       <section id="view-area" class="hidden">
         <img id="my-image" />
-        <a id="link-download" download>download</a>
+        <a id="link-download" download><i class="fa-solid fa-download"></i>download</a>
       </section>
-    </main>
-    <script src="script.js"></script>
-  </body>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>
